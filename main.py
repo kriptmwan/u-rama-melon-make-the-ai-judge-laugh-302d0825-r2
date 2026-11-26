@@ -8,6 +8,9 @@ import os
 
 LINE = "My calendar says I'm free, my inbox says I'm lying, and my boss just forwarded the inbox as proof."
 
+# The gate refuses anything outside 1-200 chars, so never ship a bad line silently.
+assert 1 <= len(LINE) <= 200, f"entry line is {len(LINE)} chars, must be 1-200"
+
 
 def main():
     os.makedirs("/output", exist_ok=True)
